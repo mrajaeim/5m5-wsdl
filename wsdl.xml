@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:sms_webservice_wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:sms_webservice_wsdl">
+<types>
+<xsd:schema targetNamespace="urn:sms_webservice_wsdl"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+ <xsd:complexType name="ArrayOfString">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="ArrayOfInteger">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:long[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_number_state">
+  <xsd:all>
+   <xsd:element name="number" type="xsd:string"/>
+   <xsd:element name="state" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_number_state">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_number_state[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_cat_list">
+  <xsd:all>
+   <xsd:element name="id" type="xsd:string"/>
+   <xsd:element name="title" type="xsd:string"/>
+   <xsd:element name="date" type="xsd:string"/>
+   <xsd:element name="number" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_cat_list">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_cat_list[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_number_in_cat">
+  <xsd:all>
+   <xsd:element name="id" type="xsd:string"/>
+   <xsd:element name="fullname" type="xsd:string"/>
+   <xsd:element name="number" type="xsd:string"/>
+   <xsd:element name="date" type="xsd:string"/>
+   <xsd:element name="gender" type="xsd:string"/>
+   <xsd:element name="fullname_en" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_number_in_cat">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_number_in_cat[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_number">
+  <xsd:all>
+   <xsd:element name="number" type="xsd:string"/>
+   <xsd:element name="order" type="xsd:string"/>
+   <xsd:element name="kind" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_user_info">
+  <xsd:all>
+   <xsd:element name="id" type="xsd:string"/>
+   <xsd:element name="fullname" type="xsd:string"/>
+   <xsd:element name="email" type="xsd:string"/>
+   <xsd:element name="mobile" type="xsd:string"/>
+   <xsd:element name="cash" type="xsd:string"/>
+   <xsd:element name="date" type="xsd:string"/>
+   <xsd:element name="date_expire" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_number">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_number[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_receive">
+  <xsd:all>
+   <xsd:element name="id" type="xsd:string"/>
+   <xsd:element name="sender_number" type="xsd:string"/>
+   <xsd:element name="receiver_number" type="xsd:string"/>
+   <xsd:element name="date" type="xsd:string"/>
+   <xsd:element name="catid" type="xsd:string"/>
+   <xsd:element name="note" type="xsd:string"/>
+   <xsd:element name="read" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_receive">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_receive[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="array_tree">
+  <xsd:all>
+   <xsd:element name="id" type="xsd:int"/>
+   <xsd:element name="name" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="return_array_tree">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:array_tree[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+</xsd:schema>
+</types>
+<message name="sms_get_number_in_catRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="catid" type="xsd:int" />
+  <part name="start" type="xsd:int" />
+  <part name="perpage" type="xsd:int" />
+  <part name="order" type="xsd:string" /></message>
+<message name="sms_get_number_in_catResponse">
+  <part name="return" type="tns:return_array_number_in_cat" /></message>
+<message name="sms_get_cat_listRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="sms_get_cat_listResponse">
+  <part name="return" type="tns:return_array_cat_list" /></message>
+<message name="send_smsRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="sender_number" type="tns:ArrayOfString" />
+  <part name="receiver_number" type="tns:ArrayOfString" />
+  <part name="note" type="tns:ArrayOfString" />
+  <part name="date" type="tns:ArrayOfString" />
+  <part name="request_uniqueid" type="tns:ArrayOfString" />
+  <part name="flash" type="tns:ArrayOfString" />
+  <part name="onlysend" type="xsd:string" /></message>
+<message name="send_smsResponse">
+  <part name="return" type="tns:ArrayOfString" /></message>
+<message name="get_numberRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="get_numberResponse">
+  <part name="return" type="tns:return_array_number" /></message>
+<message name="sms_deliverRequest">
+  <part name="smsid_arr" type="tns:ArrayOfString" />
+  <part name="dargah" type="xsd:int" /></message>
+<message name="sms_deliverResponse">
+  <part name="return" type="tns:ArrayOfInteger" /></message>
+<message name="is_number_in_blacklistRequest">
+  <part name="number" type="tns:ArrayOfString" /></message>
+<message name="is_number_in_blacklistResponse">
+  <part name="return" type="tns:return_array_number_state" /></message>
+<message name="add_userRequest">
+  <part name="admin_username" type="xsd:string" />
+  <part name="admin_password" type="xsd:string" />
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="email" type="xsd:string" />
+  <part name="fullname" type="xsd:string" />
+  <part name="mobile" type="xsd:string" />
+  <part name="catid" type="xsd:int" /></message>
+<message name="add_userResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="sms_user_infoRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="sms_user_infoResponse">
+  <part name="return" type="tns:return_array_user_info" /></message>
+<message name="sms_creditRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="sms_creditResponse">
+  <part name="return" type="xsd:int" /></message>
+<message name="sms_add_numberRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="fullname" type="xsd:string" />
+  <part name="number" type="xsd:string" />
+  <part name="catid" type="xsd:int" />
+  <part name="gender" type="xsd:string" />
+  <part name="fullname_en" type="xsd:string" />
+  <part name="gender_en" type="xsd:string" /></message>
+<message name="sms_add_numberResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="sms_receiveRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="number" type="xsd:string" />
+  <part name="catid" type="xsd:int" />
+  <part name="start" type="xsd:int" />
+  <part name="perpage" type="xsd:int" />
+  <part name="read" type="xsd:int" />
+  <part name="order" type="xsd:string" /></message>
+<message name="sms_receiveResponse">
+  <part name="return" type="tns:return_array_receive" /></message>
+<message name="sms_receive_change_readRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="id" type="tns:ArrayOfInteger" />
+  <part name="read" type="xsd:int" /></message>
+<message name="sms_receive_change_readResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="sms_count_bulk_genderRequest">
+  <part name="bankid" type="xsd:string" />
+  <part name="gender" type="xsd:int" />
+  <part name="receiver_number_kind" type="xsd:string" />
+  <part name="age_start" type="xsd:int" />
+  <part name="age_end" type="xsd:int" />
+  <part name="receiver_number_perfix" type="xsd:int" />
+  <part name="dargah" type="xsd:int" /></message>
+<message name="sms_count_bulk_genderResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="sms_send_bulk_genderRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="sender_number" type="xsd:string" />
+  <part name="bankid" type="xsd:string" />
+  <part name="note" type="xsd:string" />
+  <part name="date" type="xsd:int" />
+  <part name="record_start" type="xsd:int" />
+  <part name="receiver_count" type="xsd:int" />
+  <part name="gender" type="xsd:int" />
+  <part name="receiver_number_kind" type="xsd:string" />
+  <part name="age_start" type="xsd:int" />
+  <part name="age_end" type="xsd:int" />
+  <part name="receiver_number_perfix" type="xsd:int" />
+  <part name="billing_title" type="xsd:string" />
+  <part name="request_uniqueid" type="xsd:string" />
+  <part name="dargah" type="xsd:int" /></message>
+<message name="sms_send_bulk_genderResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="sms_count_bank_genderRequest">
+  <part name="parentid" type="xsd:int" />
+  <part name="dargah" type="xsd:int" /></message>
+<message name="sms_count_bank_genderResponse">
+  <part name="return" type="tns:return_array_tree" /></message>
+<message name="user_add_catRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="title" type="tns:ArrayOfString" /></message>
+<message name="user_add_catResponse">
+  <part name="return" type="tns:ArrayOfInteger" /></message>
+<message name="convert_unixtime_to_jalaliRequest">
+  <part name="date" type="xsd:int" /></message>
+<message name="convert_unixtime_to_jalaliResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="number_queryRequest">
+  <part name="number" type="xsd:string" /></message>
+<message name="number_queryResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="convert_jalali_to_unixtimestampRequest">
+  <part name="year" type="xsd:int" />
+  <part name="month" type="xsd:int" />
+  <part name="day" type="xsd:int" />
+  <part name="hour" type="xsd:int" />
+  <part name="minute" type="xsd:int" /></message>
+<message name="convert_jalali_to_unixtimestampResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="admin_allow_number_newRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" />
+  <part name="adminid" type="tns:ArrayOfString" />
+  <part name="number" type="tns:ArrayOfString" />
+  <part name="dargah" type="tns:ArrayOfString" /></message>
+<message name="admin_allow_number_newResponse">
+  <part name="return" type="tns:return_array_number_state" /></message>
+<portType name="SmsPanelWebservicePortType">
+  <operation name="sms_get_number_in_cat">
+    <documentation>list of number in a category</documentation>
+    <input message="tns:sms_get_number_in_catRequest"/>
+    <output message="tns:sms_get_number_in_catResponse"/>
+  </operation>
+  <operation name="sms_get_cat_list">
+    <documentation>list of category</documentation>
+    <input message="tns:sms_get_cat_listRequest"/>
+    <output message="tns:sms_get_cat_listResponse"/>
+  </operation>
+  <operation name="send_sms">
+    <documentation>Send array of note to array of number with array of sender number</documentation>
+    <input message="tns:send_smsRequest"/>
+    <output message="tns:send_smsResponse"/>
+  </operation>
+  <operation name="get_number">
+    <documentation>Returns  array of sender number</documentation>
+    <input message="tns:get_numberRequest"/>
+    <output message="tns:get_numberResponse"/>
+  </operation>
+  <operation name="sms_deliver">
+    <documentation>Send delivery report for array of smsid</documentation>
+    <input message="tns:sms_deliverRequest"/>
+    <output message="tns:sms_deliverResponse"/>
+  </operation>
+  <operation name="is_number_in_blacklist">
+    <documentation>check is number in blacklist or not</documentation>
+    <input message="tns:is_number_in_blacklistRequest"/>
+    <output message="tns:is_number_in_blacklistResponse"/>
+  </operation>
+  <operation name="add_user">
+    <documentation>add user to your reseller account</documentation>
+    <input message="tns:add_userRequest"/>
+    <output message="tns:add_userResponse"/>
+  </operation>
+  <operation name="sms_user_info">
+    <documentation>Returns  user info</documentation>
+    <input message="tns:sms_user_infoRequest"/>
+    <output message="tns:sms_user_infoResponse"/>
+  </operation>
+  <operation name="sms_credit">
+    <documentation>Returns  user info</documentation>
+    <input message="tns:sms_creditRequest"/>
+    <output message="tns:sms_creditResponse"/>
+  </operation>
+  <operation name="sms_add_number">
+    <documentation>add number to your phonebook</documentation>
+    <input message="tns:sms_add_numberRequest"/>
+    <output message="tns:sms_add_numberResponse"/>
+  </operation>
+  <operation name="sms_receive">
+    <documentation>return array of received sms</documentation>
+    <input message="tns:sms_receiveRequest"/>
+    <output message="tns:sms_receiveResponse"/>
+  </operation>
+  <operation name="sms_receive_change_read">
+    <documentation>change read state of received sms with array of smsid</documentation>
+    <input message="tns:sms_receive_change_readRequest"/>
+    <output message="tns:sms_receive_change_readResponse"/>
+  </operation>
+  <operation name="sms_count_bulk_gender">
+    <documentation>get count of mobile in gender bulk send  </documentation>
+    <input message="tns:sms_count_bulk_genderRequest"/>
+    <output message="tns:sms_count_bulk_genderResponse"/>
+  </operation>
+  <operation name="sms_send_bulk_gender">
+    <documentation>send  sms via gender bulk</documentation>
+    <input message="tns:sms_send_bulk_genderRequest"/>
+    <output message="tns:sms_send_bulk_genderResponse"/>
+  </operation>
+  <operation name="sms_count_bank_gender">
+    <documentation>get tree of gender sms bank  </documentation>
+    <input message="tns:sms_count_bank_genderRequest"/>
+    <output message="tns:sms_count_bank_genderResponse"/>
+  </operation>
+  <operation name="user_add_cat">
+    <documentation>create cat in phonebook</documentation>
+    <input message="tns:user_add_catRequest"/>
+    <output message="tns:user_add_catResponse"/>
+  </operation>
+  <operation name="convert_unixtime_to_jalali">
+    <documentation>convert unix time to jalali</documentation>
+    <input message="tns:convert_unixtime_to_jalaliRequest"/>
+    <output message="tns:convert_unixtime_to_jalaliResponse"/>
+  </operation>
+  <operation name="number_query">
+    <documentation>query for number</documentation>
+    <input message="tns:number_queryRequest"/>
+    <output message="tns:number_queryResponse"/>
+  </operation>
+  <operation name="convert_jalali_to_unixtimestamp">
+    <documentation>Convert jalali date to unix time</documentation>
+    <input message="tns:convert_jalali_to_unixtimestampRequest"/>
+    <output message="tns:convert_jalali_to_unixtimestampResponse"/>
+  </operation>
+  <operation name="admin_allow_number_new">
+    <documentation>add number to admin allow number</documentation>
+    <input message="tns:admin_allow_number_newRequest"/>
+    <output message="tns:admin_allow_number_newResponse"/>
+  </operation>
+</portType>
+<binding name="SmsPanelWebserviceBinding" type="tns:SmsPanelWebservicePortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="sms_get_number_in_cat">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_get_number_in_cat" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_get_cat_list">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_get_cat_list" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="send_sms">
+    <soap:operation soapAction="sms_webservice_wsdl#send_sms" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="get_number">
+    <soap:operation soapAction="sms_webservice_wsdl#get_number" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_deliver">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_deliver" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="is_number_in_blacklist">
+    <soap:operation soapAction="sms_webservice_wsdl#is_number_in_blacklist" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="add_user">
+    <soap:operation soapAction="sms_webservice_wsdl#add_user" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_user_info">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_user_info" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_credit">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_credit" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_add_number">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_add_number" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_receive">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_receive" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_receive_change_read">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_receive_change_read" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_count_bulk_gender">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_count_bulk_gender" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_send_bulk_gender">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_send_bulk_gender" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="sms_count_bank_gender">
+    <soap:operation soapAction="sms_webservice_wsdl#sms_count_bank_gender" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="user_add_cat">
+    <soap:operation soapAction="sms_webservice_wsdl#user_add_cat" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="convert_unixtime_to_jalali">
+    <soap:operation soapAction="sms_webservice_wsdl#convert_unixtime_to_jalali" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="number_query">
+    <soap:operation soapAction="sms_webservice_wsdl#number_query" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="convert_jalali_to_unixtimestamp">
+    <soap:operation soapAction="sms_webservice_wsdl#convert_jalali_to_unixtimestamp" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="admin_allow_number_new">
+    <soap:operation soapAction="sms_webservice_wsdl#admin_allow_number_new" style="rpc"/>
+    <input><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="sms_webservice_wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="SmsPanelWebservice">
+  <port name="SmsPanelWebservicePort" binding="tns:SmsPanelWebserviceBinding">
+    <soap:address location="http://www.5m5.ir/webservice/soap/smsService.php"/>
+  </port>
+</service>
+</definitions>
